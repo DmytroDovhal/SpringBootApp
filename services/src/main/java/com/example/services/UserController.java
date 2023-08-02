@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1")
 @CrossOrigin(maxAge = 3600)
-public class WelcomeController {
+public class UserController {
 
     private final UserService userService;
 
     @Autowired
-    public WelcomeController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/greeting", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getGreeting() {
         return new ResponseEntity<>(userService.getAllActiveUsers(), HttpStatus.OK);
     }
